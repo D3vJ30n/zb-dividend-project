@@ -27,7 +27,7 @@ spring:
     password:
 
   jwt:
-    secret: ZGF5b25lLXNwcmluZy1ib290LWRpdmlkZW5kLXByb2plY3QtdHV0b3JpYWwtand0LXNlY3JldC1rZXkK
+    secret: 2232710b7124543ddfbc75ada6e2ba75dfbec7697e71cd7105074e47cd345f1b2eb4347f017ff6330805736005a97a29e678a48fcd667c64f6fa11fe8ca4a1dd
 
 scheduler:
   scrap:

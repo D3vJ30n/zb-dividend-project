@@ -1,15 +1,14 @@
 package com.example.demo.dividend.persist.entity;
 
-import lombok.*;
 import jakarta.persistence.*;
+import lombok.*;
 
-@Entity
+@Entity(name = "COMPANY")
 @Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "COMPANY")
 public class CompanyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,17 +1,17 @@
 package com.example.demo.dividend.persist.entity;
 
-import lombok.*;
 import jakarta.persistence.*;
+import lombok.*;
+
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "DIVIDEND")
 @Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Table(
-    name = "DIVIDEND",
     uniqueConstraints = {
         @UniqueConstraint(
             columnNames = {"companyId", "date"}

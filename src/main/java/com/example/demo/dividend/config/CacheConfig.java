@@ -69,26 +69,27 @@ public class CacheConfig {
 /*
 ### 주요 동작과 이유
 
-1. **`@RequiredArgsConstructor`**
-   - 클래스의 `final` 필드와 `@NonNull`이 붙은 필드에 대해 생성자를 자동으로 생성하기 위해 사용함.
-   - 현재는 `final` 필드가 없지만, 추가될 경우를 대비하여 작성됨.
+1. @RequiredArgsConstructor
+   클래스의 final 필드에 대해 생성자를 자동으로 생성하기 위해 사용됨.
+   현재는 final 필드가 존재하지 않지만, 추가될 가능성을 대비하여 작성됨.
 
-2. **RedisConnectionFactory**
-   - Redis와의 연결을 생성하고 관리하기 위해 사용됨.
-   - `LettuceConnectionFactory`를 통해 RedisStandaloneConfiguration을 기반으로 단일 노드 Redis 서버에 연결하도록 설정함.
+2. RedisConnectionFactory
+   Redis 서버와의 연결을 생성하고 관리하기 위해 사용됨.
+   LettuceConnectionFactory를 활용하여 RedisStandaloneConfiguration 기반의 단일 노드 Redis 서버에 연결하도록 설정함.
 
-3. **RedisCacheManager**
-   - Spring CacheManager 구현체로, Redis를 캐시로 사용하기 위해 설정함.
-   - 캐시 데이터의 직렬화 방식을 설정하기 위해 `StringRedisSerializer`와 `GenericJackson2JsonRedisSerializer`를 사용함.
-   - TTL 설정(`entryTtl`)으로 캐시의 유효 기간을 3분으로 제한하여 오래된 데이터를 자동으로 제거하도록 설정함.
+3. RedisCacheManager
+   Spring의 CacheManager 구현체로, Redis를 캐시로 사용하기 위한 설정을 정의함.
+   캐시 데이터의 직렬화 방식을 설정하기 위해 StringRedisSerializer와 GenericJackson2JsonRedisSerializer를 사용함.
+   TTL(entryTtl)을 3분으로 설정하여 오래된 데이터를 자동으로 제거하도록 구성함.
 
-4. **직렬화 설정**
-   - `StringRedisSerializer`: 캐시 키를 문자열로 저장하기 위해 사용.
-   - `GenericJackson2JsonRedisSerializer`: 객체를 JSON 형식으로 변환하여 캐시 값으로 저장하기 위해 사용.
+4. 직렬화 설정
+   StringRedisSerializer는 캐시 키를 문자열로 저장하기 위해 사용됨.
+   GenericJackson2JsonRedisSerializer는 객체를 JSON 형식으로 변환하여 캐시 값으로 저장하기 위해 사용됨.
 
 ---
 
 ### 코드의 목적
-이 클래스는 Redis를 기반으로 캐시를 설정하기 위한 구성 클래스임. Redis 서버 연결 정보를 설정하고, Spring CacheManager를 사용해 Redis 캐시 설정을 관리함.
-이를 통해 Redis를 효율적으로 활용하여 데이터를 직렬화하고 TTL(Time-to-Live) 설정을 통해 캐시 데이터의 만료를 관리함.
+이 클래스는 Redis를 기반으로 캐시를 설정하기 위한 구성 클래스임.
+Redis 서버 연결을 구성하고 Spring CacheManager를 활용하여 캐시 데이터의 직렬화와 만료 정책을 설정함.
+이를 통해 Redis를 효율적으로 활용하여 애플리케이션 성능을 최적화하고 데이터의 유효성을 관리함.
  */

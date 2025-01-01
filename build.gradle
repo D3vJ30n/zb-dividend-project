@@ -23,57 +23,41 @@ repositories {
 dependencies {
     // 스프링 부트 기본 의존성
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.boot:spring-boot-starter-security:3.2.8' // 테스트 할 때 주석 처리 해야함, 401 에러 발생
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
-    implementation 'org.jsoup:jsoup:1.18.1'
-
-    // JWT
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
+    implementation 'com.h2database:h2'
+    implementation 'org.jsoup:jsoup:1.15.3'
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
-    implementation 'com.google.android.gms:play-services-auth:21.3.0'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
-
-    implementation 'org.seleniumhq.selenium:selenium-java:4.14.0'
-    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.14.0'
-
-    // Apache Commons Collections
-    implementation 'org.apache.commons:commons-collections4:4.4'
-
-    // RestTemplate 사용을 위한 Apache HttpComponents 추가
-    implementation 'org.apache.httpcomponents.client5:httpclient5:5.4'
-
-    // Redis
-    implementation 'org.redisson:redisson-spring-boot-starter:3.23.5'
-    implementation 'com.github.kstyrc:embedded-redis:0.6'
-
-    // 로깅
-    implementation 'org.slf4j:slf4j-api'
-
-    // 테스트용 임베디드 Redis
-    testImplementation 'it.ozimov:embedded-redis:0.7.3'
-
-    // Jakarta
-    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
-
-    // H2 (테스트용)
-    runtimeOnly 'com.h2database:h2'
-
-    // MySQL
-    implementation 'com.mysql:mysql-connector-j'
-
-    // Lombok
-    implementation 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
-
-    // 테스트
+    
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.mockito:mockito-core:5.5.0'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.mockito:mockito-core:5.7.0'
+    testImplementation platform('org.junit:junit-bom:5.10.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.3'
+    testImplementation 'com.github.tomakehurst:wiremock-jre8:2.35.1'
+    testImplementation 'javax.servlet:javax.servlet-api:4.0.1'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
 
 configurations.all {

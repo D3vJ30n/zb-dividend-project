@@ -34,28 +34,28 @@ public class AppConfig {
 /*
 ### 추가 설명
 
-1. **`@Configuration`**
+1. @Configuration
    Spring Framework에서 이 클래스를 설정 정보로 사용하기 위해 선언함.
-   이 클래스 내부에서 정의한 메서드들은 `@Bean` 어노테이션을 통해 Spring 컨테이너에 객체(빈)로 등록된다.
+   이 클래스 내부에서 정의한 메서드들은 @Bean 어노테이션을 통해 Spring 컨테이너에 객체(빈)로 등록된다.
 
-2. **`@Bean`**
-   `@Bean` 어노테이션은 해당 메서드가 반환하는 객체를 Spring 컨테이너가 관리하는 빈(Bean)으로 등록하기 위해 사용함.
-   *Spring 컨테이너란?*
+2. @Bean
+   @Bean 어노테이션은 해당 메서드가 반환하는 객체를 Spring 컨테이너가 관리하는 빈(Bean)으로 등록하기 위해 사용함.
+   Spring 컨테이너란?
    - 애플리케이션에서 사용하는 객체(빈)를 생성하고 관리하는 역할을 담당하는 Spring의 핵심 구성 요소.
-   *빈의 역할*
+   빈의 역할
    - 애플리케이션 전역에서 재사용 가능하며, 필요한 곳에서 의존성 주입(Dependency Injection)을 통해 사용 가능함.
 
-3. **제네릭 표기법 `<T>`**
-   - **`Trie<String, String>`**: PatriciaTrie 객체가 `String` 타입의 키와 값을 저장하도록 명시함.
-   - `<String, String>`과 같은 제네릭은 컴파일러에게 이 객체가 어떤 타입을 다룰지 알려줌으로써 코드의 타입 안정성을 보장함.
+3. 제네릭 표기법 <T>
+   - Trie<String, String>: PatriciaTrie 객체가 String 타입의 키와 값을 저장하도록 명시함.
+   - <String, String>과 같은 제네릭은 컴파일러에게 이 객체가 어떤 타입을 다룰지 알려줌으로써 코드의 타입 안정성을 보장함.
    - PatriciaTrie는 문자열 키를 효율적으로 관리하고 검색하는 자료구조이므로 키와 값의 타입을 명시적으로 설정함.
 
-4. **`<>` (다이아몬드 연산자)**
-   - **`new PatriciaTrie<>()`**: Java 7부터 도입된 다이아몬드 연산자. 객체 생성 시 제네릭 타입을 반복하지 않도록 간결하게 작성하기 위해 사용함.
-   - 예를 들어, `new PatriciaTrie<String, String>()` 대신 `new PatriciaTrie<>()`로 타입을 생략 가능.
+4. <> (다이아몬드 연산자)
+   - new PatriciaTrie<>(): Java 7부터 도입된 다이아몬드 연산자. 객체 생성 시 제네릭 타입을 반복하지 않도록 간결하게 작성하기 위해 사용함.
+   - 예를 들어, new PatriciaTrie<String, String>() 대신 new PatriciaTrie<>()로 타입을 생략 가능.
    - 컴파일러가 앞의 타입 정보를 기반으로 제네릭 타입을 추론함.
 
-5. **`BCryptPasswordEncoder`**
+5. BCryptPasswordEncoder
    - 단방향 해시 함수(BCrypt)를 사용해 비밀번호를 암호화.
    - 해싱은 암호화된 값을 복호화할 수 없기 때문에, 보안이 중요한 비밀번호와 같은 데이터를 안전하게 저장하기 위해 사용함.
    - 추가적으로, BCrypt는 반복 횟수(cost)를 설정해 연산 속도를 조절할 수 있어, 공격자가 해시 값을 역추적하기 어렵게 함.
@@ -64,15 +64,15 @@ public class AppConfig {
 /*
 ### 주요 동작과 이유
 
-1. **`@Configuration`**
+1. @Configuration
    - Spring Framework에서 이 클래스를 설정 정보로 인식하도록 선언함.
    - 이 클래스 내부에서 정의한 메서드들이 스프링 컨테이너에 관리되는 빈으로 등록되도록 함.
 
-2. **`@Bean` - `trie()`**
+2. @Bean - trie()
    - PatriciaTrie 객체를 스프링 빈으로 등록하여 전역적으로 사용할 수 있도록 함.
    - `PatriciaTrie`는 문자열 키의 공통 접두사를 공유하는 자료구조로, 문자열 검색 및 관리에 효율적임.
 
-3. **`@Bean` - `passwordEncoder()`**
+3. @Bean - passwordEncoder()
    - BCryptPasswordEncoder 객체를 스프링 빈으로 등록하여 비밀번호 암호화를 지원함.
    - BCrypt는 단방향 암호화 방식을 사용해 비밀번호의 안전성과 복잡성을 보장함.
 

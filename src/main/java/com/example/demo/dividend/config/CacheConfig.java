@@ -24,11 +24,11 @@ import java.time.Duration;
 public class CacheConfig {
 
     // Redis 서버의 호스트 이름을 가져오기 위해 @Value로 외부 설정 파일에서 값을 주입받음
-    @Value("${spring.redis.host}")
+    @Value("${spring.data.redis.host}")
     private String host;
 
     // Redis 서버의 포트 번호를 가져오기 위해 @Value로 외부 설정 파일에서 값을 주입받음
-    @Value("${spring.redis.port}")
+    @Value("${spring.data.redis.port}")
     private int port;
 
     // RedisConnectionFactory 빈을 생성하여 Redis 서버와의 연결을 관리함
